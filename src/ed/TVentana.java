@@ -7,9 +7,6 @@ package ed;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.border.BevelBorder;
 
 /**
  *
@@ -24,7 +21,7 @@ public class TVentana extends javax.swing.JFrame {
     private Dimension Screen;
     private PVI pv;
     private Latex L, L2;
-    Fraccion f = new Fraccion();
+    Fraccion f;
 
     public TVentana() {
         initComponents();
@@ -38,6 +35,7 @@ public class TVentana extends javax.swing.JFrame {
         pv = new PVI();
         L2 = new Latex("La~solución~general~es:", 40);
         Solu.setIcon(L2.getIcono());
+        f = new Fraccion();
     }
 
     private double RedondearNumeros(double Num) {
@@ -54,8 +52,30 @@ public class TVentana extends javax.swing.JFrame {
     private void MostrarSoluciones() {
         if (jCheckBox1.isSelected()) {
             if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) > 0) {
+                if (PVICaso1()[0] < 0) {
+                    L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso1()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[0])) + ")x} -"
+                            + f.toFraccion(RedondearNumeros(Math.abs(PVICaso1()[1]))) + "e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[1])).toString() + ")x}", 28);
+                    LaLatex.setIcon(L.getIcono());
+                } else {
+                    L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso1()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[0])) + ")x} +"
+                            + f.toFraccion(RedondearNumeros(PVICaso1()[1])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[1])).toString() + ")x}", 28);
+                    LaLatex.setIcon(L.getIcono());
+                }
             } else if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) == 0) {
+                if (PVICaso2()[1] < 0) {
+                    L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso2()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x} "
+                            + "-" + f.toFraccion(RedondearNumeros(Math.abs(PVICaso2()[1]))) + "xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x}", 28);
+                    LaLatex.setIcon(L.getIcono());
+
+                } else {
+                    L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso2()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x} "
+                            + "+" + f.toFraccion(RedondearNumeros(PVICaso2()[1])) + "xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x}", 28);
+                    LaLatex.setIcon(L.getIcono());
+
+                }
             } else {
+                //Metodo de Constantes tipo 3
+                
             }
         } else {
             if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) > 0) {
@@ -69,9 +89,9 @@ public class TVentana extends javax.swing.JFrame {
                         + "+ C_{2} xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x}", 28);
                 LaLatex.setIcon(L.getIcono());
             } else {
-                L = new Latex("y(x) = C_1 e^{(" + f.toFraccion(RedondearNumeros(SolucionesImaginarias()[0])).toString()
+                L = new Latex("y(x) = C_1 e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
                         + ")x}Cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] + "
-                        + "C_2 e^{(" + f.toFraccion(RedondearNumeros(SolucionesImaginarias()[0])).toString() + ")x} Sen[("
+                        + "C_2 e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} Sen[("
                         + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
                 LaLatex.setIcon(L.getIcono());
             }
@@ -99,15 +119,24 @@ public class TVentana extends javax.swing.JFrame {
         return Vec;
     }
 
+    private double[] PVICaso2() {
+        double a, b, z, d, Vec[];
+        a = Double.parseDouble(Ca.getText());
+        b = Double.parseDouble(Cb.getText());
+        z = Double.parseDouble(Cz.getText());
+        d = Double.parseDouble(Cd.getText());
+        Vec = pv.ConstantesCasoII(a, b, z, d, Root);
+        return Vec;
+    }
+
     private void CambiarTamaño() {
         if (jCheckBox1.isSelected()) {
             setSize(AnchoAlterado + 55, getHeight());
-           else {
+        } else {
             setSize(AnchoOriginal, getHeight());
         }
         setLocation((Screen.width - getWidth()) / 2, (Screen.height - getHeight()) / 2);
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -278,6 +307,11 @@ public class TVentana extends javax.swing.JFrame {
         jLabel4.setText("y = 0");
 
         ct.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
+        ct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ctActionPerformed(evt);
+            }
+        });
 
         at.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
 
@@ -309,12 +343,11 @@ public class TVentana extends javax.swing.JFrame {
                 .addGroup(Pan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addGroup(Pan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(Pan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(at, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(ct, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(Pan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(at, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ct, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -457,6 +490,10 @@ public class TVentana extends javax.swing.JFrame {
     private void CzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CzActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CzActionPerformed
+
+    private void ctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctActionPerformed
+        jButton1ActionPerformed(evt);
+    }//GEN-LAST:event_ctActionPerformed
 
     /**
      * @param args the command line arguments

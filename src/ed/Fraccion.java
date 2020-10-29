@@ -180,9 +180,12 @@ public class Fraccion {
         if (this.getDenominador() != 0) {
             simplificar(this);
             if (this.getDenominador() == 1) {
-                return String.valueOf(getNumerador());
+                // return String.valueOf(getNumerador());
+                return getNumerador() + "";
             } else {
+
                 return getNumerador() + "/" + getDenominador();
+
             }
         } else {
             return "El denominador debe ser distinto de 0";
