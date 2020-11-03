@@ -36,5 +36,19 @@ public class PVI {
         ConsII[1] = C2;
         return ConsII;
     }
-    //public double[] ConstantesCasoIII(double a, double b, double z, double d, Raices R) {}
+
+    public double[] ConstantesCasoIII(double a, double b, double z, double d, Raices r, Complejos C) {
+        double C1, C2;
+        double m, l;
+        l = Math.abs(C.FormulaGeneralPositiva(r.getA(), r.getB(), r.getC()).Real);
+        m = Math.abs(C.FormulaGeneralPositiva(r.getA(), r.getB(), r.getC()).Imaginario);
+        C2 = ((b * Math.exp(-l * a)) + (Math.exp(-l * z)
+                * (m * d * Math.sin(m * a) * (1 / Math.cos(m * z)) - (l * d * Math.cos(m * a)
+                * (1 / Math.cos(m * z)))))) / ((m * (1 / Math.cos(m * a)) * Math.tan(m * z)) - (l * Math.cos(m * a) * Math.tan(m * z))
+                + (l * Math.sin(m * a)) + (m * Math.cos(m * a)));
+        C1 = ((d * Math.exp(-l * z)) / Math.cos(m * z)) - (C2 * Math.tan(m * z));
+        ConsIII[0] = C1;
+        ConsIII[1] = C2;
+        return ConsIII;
+    }
 }

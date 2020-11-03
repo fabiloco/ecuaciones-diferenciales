@@ -7,6 +7,7 @@ package ed;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,7 +37,6 @@ public class TVentana extends javax.swing.JFrame {
         L2 = new Latex("La~solución~general~es:", 40);
         Solu.setIcon(L2.getIcono());
         f = new Fraccion();
-	System.out.print((char)45);
     }
 
     private double RedondearNumeros(double Num) {
@@ -76,7 +76,20 @@ public class TVentana extends javax.swing.JFrame {
                 }
             } else {
                 //Metodo de Constantes tipo 3
-                
+                if (PVICaso3()[1] < 0) {
+                    L = new Latex("y(x) =~(" + f.toFraccion(RedondearNumeros(PVICaso3()[0])) + ")e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
+                            + ")x}Cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] - ("
+                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} Sen[("
+                            + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
+                    LaLatex.setIcon(L.getIcono());
+                } else {
+                    L = new Latex("y(x) = ~ (" + f.toFraccion(RedondearNumeros(PVICaso3()[0])) + ")e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
+                            + ")x}Cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] + ("
+                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} Sen[("
+                            + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
+                    LaLatex.setIcon(L.getIcono());
+                }
+
             }
         } else {
             if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) > 0) {
@@ -127,6 +140,16 @@ public class TVentana extends javax.swing.JFrame {
         z = Double.parseDouble(Cz.getText());
         d = Double.parseDouble(Cd.getText());
         Vec = pv.ConstantesCasoII(a, b, z, d, Root);
+        return Vec;
+    }
+
+    private double[] PVICaso3() {
+        double a, b, z, d, Vec[];
+        a = Double.parseDouble(Ca.getText());
+        b = Double.parseDouble(Cb.getText());
+        z = Double.parseDouble(Cz.getText());
+        d = Double.parseDouble(Cd.getText());
+        Vec = pv.ConstantesCasoIII(a, b, z, d, Root, Complex);
         return Vec;
     }
 
@@ -498,11 +521,14 @@ public class TVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Root.setA(Double.parseDouble(at.getText()));
-        Root.setB(Double.parseDouble(bt.getText()));
-        Root.setC(Double.parseDouble(ct.getText()));
-        MostrarSoluciones();
-        //jTextArea1.append("Aquí iria la solución de la forma y(x) = e^(x)");
+        if (Integer.parseInt(at.getText()) != 0) {
+            Root.setA(Double.parseDouble(at.getText()));
+            Root.setB(Double.parseDouble(bt.getText()));
+            Root.setC(Double.parseDouble(ct.getText()));
+            MostrarSoluciones();
+        } else {
+            JOptionPane.showMessageDialog(null, "Cuidado, el coeficiente " + "'a'" + " no puede ser 0", "Alerta", 0, null);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
