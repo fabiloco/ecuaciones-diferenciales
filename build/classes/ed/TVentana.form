@@ -58,8 +58,10 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="Ca" min="-2" pref="66" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cb" alignment="1" min="-2" pref="66" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Cb" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -81,9 +83,6 @@
               <Font name="Dialog" size="60" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CdKeyTyped"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -101,7 +100,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CzActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CzKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -118,9 +116,6 @@
               <Font name="Dialog" size="60" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CaKeyTyped"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -136,9 +131,6 @@
               <Font name="Dialog" size="60" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CbKeyTyped"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -392,7 +384,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ctActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ctKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="at">
@@ -401,9 +392,6 @@
               <Font name="Dialog" size="60" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="atKeyTyped"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="bt">
           <Properties>
@@ -411,9 +399,6 @@
               <Font name="Dialog" size="60" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btKeyTyped"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

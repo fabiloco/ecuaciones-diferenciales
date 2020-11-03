@@ -75,7 +75,7 @@ public class TVentana extends javax.swing.JFrame {
                 }
             } else {
                 //Metodo de Constantes tipo 3
-
+                
             }
         } else {
             if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) > 0) {
@@ -186,11 +186,6 @@ public class TVentana extends javax.swing.JFrame {
         jLabel1.setText(") =");
 
         Cd.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
-        Cd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                CdKeyTyped(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
         jLabel5.setText("y(");
@@ -201,31 +196,16 @@ public class TVentana extends javax.swing.JFrame {
                 CzActionPerformed(evt);
             }
         });
-        Cz.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                CzKeyTyped(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
         jLabel6.setText("y'(");
 
         Ca.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
-        Ca.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                CaKeyTyped(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
         jLabel7.setText(") =");
 
         Cb.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
-        Cb.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                CbKeyTyped(evt);
-            }
-        });
 
         javax.swing.GroupLayout Pan3Layout = new javax.swing.GroupLayout(Pan3);
         Pan3.setLayout(Pan3Layout);
@@ -267,8 +247,9 @@ public class TVentana extends javax.swing.JFrame {
                 .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Ca, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel1)
-                    .addComponent(Cb, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(Cb, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -331,25 +312,10 @@ public class TVentana extends javax.swing.JFrame {
                 ctActionPerformed(evt);
             }
         });
-        ct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ctKeyTyped(evt);
-            }
-        });
 
         at.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
-        at.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                atKeyTyped(evt);
-            }
-        });
 
         bt.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
-        bt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                btKeyTyped(evt);
-            }
-        });
 
         javax.swing.GroupLayout Pan1Layout = new javax.swing.GroupLayout(Pan1);
         Pan1.setLayout(Pan1Layout);
@@ -459,7 +425,7 @@ public class TVentana extends javax.swing.JFrame {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckBox1))
-                    .addComponent(Pan2, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(Pan2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -529,48 +495,6 @@ public class TVentana extends javax.swing.JFrame {
         jButton1ActionPerformed(evt);
     }//GEN-LAST:event_ctActionPerformed
 
-    private void atKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_atKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-    }//GEN-LAST:event_atKeyTyped
-
-    }
-    private void btKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_btKeyTyped
-
-    private void ctKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ctKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();        // TODO add your handling code here:
-    }//GEN-LAST:event_ctKeyTyped
-
-    }
-    private void CzKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CzKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_CzKeyTyped
-
-    private void CdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CdKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_CdKeyTyped
-
-    private void CaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_CaKeyTyped
-
-    private void CbKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CbKeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_CbKeyTyped
-
     /**
      * @param args the command line arguments
      */
@@ -585,24 +509,16 @@ public class TVentana extends javax.swing.JFrame {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TVentana.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(TVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TVentana.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(TVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TVentana.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(TVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TVentana.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
