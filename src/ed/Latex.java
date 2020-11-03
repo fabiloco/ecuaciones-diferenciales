@@ -25,7 +25,7 @@ public class Latex {
             this.Icono = this.Ecuacion.createTeXIcon(TeXConstants.ALIGN_LEFT, this.Tamaño);
             return this.Icono;
         } catch (ParseException e) {
-            System.out.println("Error" + e.getMessage());
+            System.out.println("Error LaTex: " + e.getMessage());
             this.Icono = null;
             return this.Icono;
         }
