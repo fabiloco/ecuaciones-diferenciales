@@ -36,6 +36,7 @@ public class TVentana extends javax.swing.JFrame {
         L2 = new Latex("La~solución~general~es:", 40);
         Solu.setIcon(L2.getIcono());
         f = new Fraccion();
+	System.out.print((char)45);
     }
 
     private double RedondearNumeros(double Num) {
