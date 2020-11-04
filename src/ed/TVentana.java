@@ -39,21 +39,24 @@ public class TVentana extends javax.swing.JFrame {
         f = new Fraccion();
     }
 
+    //Metodo para redondear los numeros a sus 4 cifras decimales
     private double RedondearNumeros(double Num) {
         return (double) Math.round(Num * 1000d) / 1000d;
     }
 
+    //Encapsulamos Las soluciones imaginarias en un vector
     public double[] SolucionesImaginarias() {
         double[] Sol = new double[2];
         Sol[0] = Complex.FormulaGeneralPositiva(Root.getA(), Root.getB(), Root.getC()).Real;
         Sol[1] = Complex.FormulaGeneralPositiva(Root.getA(), Root.getB(), Root.getC()).Imaginario;
         return Sol;
     }
-
+    
+    //Metodo Para mostrar las soluciones generales y particulares de todos los casos
     private void MostrarSoluciones() {
         if (jCheckBox1.isSelected()) {
             if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) > 0) {
-                if (PVICaso1()[0] < 0) {
+                if (PVICaso1()[1] < 0) {
                     L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso1()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[0])) + ")x} -"
                             + f.toFraccion(RedondearNumeros(Math.abs(PVICaso1()[1]))) + "e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[1])).toString() + ")x}", 28);
                     LaLatex.setIcon(L.getIcono());
@@ -67,10 +70,9 @@ public class TVentana extends javax.swing.JFrame {
                     L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso2()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x} "
                             + "-" + f.toFraccion(RedondearNumeros(Math.abs(PVICaso2()[1]))) + "xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x}", 28);
                     LaLatex.setIcon(L.getIcono());
-
                 } else {
-                    L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso2()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x} "
-                            + "+" + f.toFraccion(RedondearNumeros(PVICaso2()[1])) + "xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x}", 28);
+                    L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso2()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())) + ")x} "
+                            + "+" + f.toFraccion(RedondearNumeros(PVICaso2()[1])) + "xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())) + ")x}", 28);
                     LaLatex.setIcon(L.getIcono());
 
                 }
@@ -89,16 +91,13 @@ public class TVentana extends javax.swing.JFrame {
                             + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
                     LaLatex.setIcon(L.getIcono());
                 }
-
             }
         } else {
             if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) > 0) {
                 L = new Latex("y(x) = C_{1} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[0])).toString() + ")x} "
                         + "+ C_{2} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[1])).toString() + ")x}", 28);
                 LaLatex.setIcon(L.getIcono());
-
             } else if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) == 0) {
-
                 L = new Latex("y(x) = C_{1} e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x} "
                         + "+ C_{2} xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x}", 28);
                 LaLatex.setIcon(L.getIcono());
@@ -112,17 +111,19 @@ public class TVentana extends javax.swing.JFrame {
         }
     }
 
+    //Cambiamos el tamaño de la ventana y añadimos el panel de los PVI's
     private void AñadirPanel() {
         if (jCheckBox1.isSelected()) {
             Pan3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             Pan3.setVisible(true);
-            Pan3.setLocation(889, 11);
+            Pan3.setLocation(939, 11);
             Pan3.setSize(315, 200);
         } else {
             Pan3.setVisible(false);
         }
     }
-
+    
+    //Encapsulamos en los siguientes metodos, todas las constantes de los PVI's
     private double[] PVICaso1() {
         double a, b, z, d, Vec[];
         a = Double.parseDouble(Ca.getText());
@@ -152,7 +153,8 @@ public class TVentana extends javax.swing.JFrame {
         Vec = pv.ConstantesCasoIII(a, b, z, d, Root, Complex);
         return Vec;
     }
-
+    
+    //Cambiamos el tamaño de la ventana
     private void CambiarTamaño() {
         if (jCheckBox1.isSelected()) {
             setSize(AnchoAlterado + 55, getHeight());
@@ -209,12 +211,12 @@ public class TVentana extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
         jLabel1.setText(") =");
 
-        Cd.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
+        Cd.setFont(new java.awt.Font("Dialog", 0, 45)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
         jLabel5.setText("y(");
 
-        Cz.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
+        Cz.setFont(new java.awt.Font("Dialog", 0, 45)); // NOI18N
         Cz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CzActionPerformed(evt);
@@ -229,7 +231,7 @@ public class TVentana extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
         jLabel6.setText("y'(");
 
-        Ca.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
+        Ca.setFont(new java.awt.Font("Dialog", 0, 45)); // NOI18N
         Ca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 CaKeyTyped(evt);
@@ -239,7 +241,7 @@ public class TVentana extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
         jLabel7.setText(") =");
 
-        Cb.setFont(new java.awt.Font("Dialog", 0, 60)); // NOI18N
+        Cb.setFont(new java.awt.Font("Dialog", 0, 45)); // NOI18N
 
         javax.swing.GroupLayout Pan3Layout = new javax.swing.GroupLayout(Pan3);
         Pan3.setLayout(Pan3Layout);
@@ -258,29 +260,28 @@ public class TVentana extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Ca, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Pan3Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(Cd, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Pan3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(Cb, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Cb, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cd, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         Pan3Layout.setVerticalGroup(
             Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pan3Layout.createSequentialGroup()
                 .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
+                    .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(Cd, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5)
-                    .addComponent(Cz, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Cz, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Ca, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                    .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(Ca, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
                         .addComponent(Cb, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -475,7 +476,7 @@ public class TVentana extends javax.swing.JFrame {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckBox1))
-                    .addComponent(Pan2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(Pan2, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -509,6 +510,13 @@ public class TVentana extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         CambiarTamaño();
         AñadirPanel();
+        if (!jCheckBox1.isSelected()) {
+            L2 = new Latex("La~solución~general~es:", 40);
+            Solu.setIcon(L2.getIcono());
+        } else {
+            L2 = new Latex("La~solución~particular~es:", 40);
+            Solu.setIcon(L2.getIcono());
+        }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -517,11 +525,12 @@ public class TVentana extends javax.swing.JFrame {
         ct.setText("");
         Cz.setText("");
         Ca.setText("");
-        
+        Cb.setText("");
+        Cd.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (Integer.parseInt(at.getText()) != 0) {
+        if (Double.parseDouble(at.getText()) != 0) {
             Root.setA(Double.parseDouble(at.getText()));
             Root.setB(Double.parseDouble(bt.getText()));
             Root.setC(Double.parseDouble(ct.getText()));
@@ -552,9 +561,9 @@ public class TVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_ctActionPerformed
 
     private void atKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_atKeyTyped
-        char tecla=evt.getKeyChar();    //Agarra la tecla presionada en el evento
-        
-        if(Character.isLetter(tecla) || Character.isSpaceChar(tecla))   //Determina si es una letra o si es un espacio
+        char tecla = evt.getKeyChar();    //Agarra la tecla presionada en el evento
+
+        if (Character.isLetter(tecla) || Character.isSpaceChar(tecla)) //Determina si es una letra o si es un espacio
         {
             getToolkit().beep();    //Hace un sonidito
             evt.consume();  //Consume el evento, lo elimina
@@ -562,9 +571,9 @@ public class TVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_atKeyTyped
 
     private void btKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btKeyTyped
-        char tecla=evt.getKeyChar();    //Agarra la tecla presionada en el evento
-        
-        if(Character.isLetter(tecla) || Character.isSpaceChar(tecla))   //Determina si es una letra o si es un espacio
+        char tecla = evt.getKeyChar();    //Agarra la tecla presionada en el evento
+
+        if (Character.isLetter(tecla) || Character.isSpaceChar(tecla)) //Determina si es una letra o si es un espacio
         {
             getToolkit().beep();    //Hace un sonidito
             evt.consume();  //Consume el evento, lo elimina
@@ -572,9 +581,9 @@ public class TVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_btKeyTyped
 
     private void ctKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ctKeyTyped
-        char tecla=evt.getKeyChar();    //Agarra la tecla presionada en el evento
-        
-        if(Character.isLetter(tecla) || Character.isSpaceChar(tecla))   //Determina si es una letra o si es un espacio
+        char tecla = evt.getKeyChar();    //Agarra la tecla presionada en el evento
+
+        if (Character.isLetter(tecla) || Character.isSpaceChar(tecla)) //Determina si es una letra o si es un espacio
         {
             getToolkit().beep();    //Hace un sonidito
             evt.consume();  //Consume el evento, lo elimina
@@ -582,9 +591,9 @@ public class TVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_ctKeyTyped
 
     private void CzKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CzKeyTyped
-        char tecla=evt.getKeyChar();    //Agarra la tecla presionada en el evento
-        
-        if(Character.isLetter(tecla) || Character.isSpaceChar(tecla))   //Determina si es una letra o si es un espacio
+        char tecla = evt.getKeyChar();    //Agarra la tecla presionada en el evento
+
+        if (Character.isLetter(tecla) || Character.isSpaceChar(tecla)) //Determina si es una letra o si es un espacio
         {
             getToolkit().beep();    //Hace un sonidito
             evt.consume();  //Consume el evento, lo elimina
@@ -592,9 +601,9 @@ public class TVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_CzKeyTyped
 
     private void CaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaKeyTyped
-        char tecla=evt.getKeyChar();    //Agarra la tecla presionada en el evento
-        
-        if(Character.isLetter(tecla) || Character.isSpaceChar(tecla))   //Determina si es una letra o si es un espacio
+        char tecla = evt.getKeyChar();    //Agarra la tecla presionada en el evento
+
+        if (Character.isLetter(tecla) || Character.isSpaceChar(tecla)) //Determina si es una letra o si es un espacio
         {
             getToolkit().beep();    //Hace un sonidito
             evt.consume();  //Consume el evento, lo elimina
