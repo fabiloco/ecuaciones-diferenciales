@@ -266,7 +266,7 @@ public class TVentana extends javax.swing.JFrame {
                 .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Cb, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cd, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         Pan3Layout.setVerticalGroup(
             Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,7 +285,7 @@ public class TVentana extends javax.swing.JFrame {
                     .addGroup(Pan3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
                         .addComponent(Cb, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         txt.setEditable(false);
@@ -476,7 +476,7 @@ public class TVentana extends javax.swing.JFrame {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckBox1))
-                    .addComponent(Pan2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(Pan2, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
