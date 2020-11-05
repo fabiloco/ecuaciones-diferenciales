@@ -5,7 +5,6 @@
  */
 package ed;
 
-import javax.swing.JDialog;
 
 /**
  *

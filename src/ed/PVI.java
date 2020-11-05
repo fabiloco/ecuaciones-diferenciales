@@ -40,8 +40,8 @@ public class PVI {
     public double[] ConstantesCasoIII(double a, double b, double z, double d, Raices r, Complejos C) {
         double C1, C2;
         double m, l;
-        l = Math.abs(C.FormulaGeneralPositiva(r.getA(), r.getB(), r.getC()).Real);
-        m = Math.abs(C.FormulaGeneralPositiva(r.getA(), r.getB(), r.getC()).Imaginario);
+        l = Math.abs(C.FormulaGeneralPositiva(r.getA(), r.getB(), r.getC()).getReal());
+        m = Math.abs(C.FormulaGeneralPositiva(r.getA(), r.getB(), r.getC()).getImaginario());
         C2 = ((b * Math.exp(-l * a)) + (Math.exp(-l * z)
                 * (m * d * Math.sin(m * a) * (1 / Math.cos(m * z)) - (l * d * Math.cos(m * a)
                 * (1 / Math.cos(m * z)))))) / ((m * (1 / Math.cos(m * a)) * Math.tan(m * z)) - (l * Math.cos(m * a) * Math.tan(m * z))

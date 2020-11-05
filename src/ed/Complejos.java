@@ -2,13 +2,24 @@ package ed;
 
 public class Complejos {
 
-    public double Real;
-    public double Imaginario;
+    private double Real;
+    private double Imaginario;
 
     public Complejos() {
         Real = 0;
         Imaginario = 0;
     }
+
+    public double getReal() {
+        return Real;
+    }
+
+    public double getImaginario() {
+        return Imaginario;
+    }
+    
+    
+    
 
     public Complejos FormulaGeneralPositiva(double a, double b, double c) {
         Complejos Resultado = new Complejos();

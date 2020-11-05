@@ -47,11 +47,11 @@ public class TVentana extends javax.swing.JFrame {
     //Encapsulamos Las soluciones imaginarias en un vector
     public double[] SolucionesImaginarias() {
         double[] Sol = new double[2];
-        Sol[0] = Complex.FormulaGeneralPositiva(Root.getA(), Root.getB(), Root.getC()).Real;
-        Sol[1] = Complex.FormulaGeneralPositiva(Root.getA(), Root.getB(), Root.getC()).Imaginario;
+        Sol[0] = Complex.FormulaGeneralPositiva(Root.getA(), Root.getB(), Root.getC()).getReal();
+        Sol[1] = Complex.FormulaGeneralPositiva(Root.getA(), Root.getB(), Root.getC()).getImaginario();
         return Sol;
     }
-    
+
     //Metodo Para mostrar las soluciones generales y particulares de todos los casos
     private void MostrarSoluciones() {
         if (jCheckBox1.isSelected()) {
@@ -80,14 +80,14 @@ public class TVentana extends javax.swing.JFrame {
                 //Metodo de Constantes tipo 3
                 if (PVICaso3()[1] < 0) {
                     L = new Latex("y(x) =~(" + f.toFraccion(RedondearNumeros(PVICaso3()[0])) + ")e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
-                            + ")x}Cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] - ("
-                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} Sen[("
+                            + ")x}cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] - ("
+                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} sen[("
                             + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
                     LaLatex.setIcon(L.getIcono());
                 } else {
                     L = new Latex("y(x) = ~ (" + f.toFraccion(RedondearNumeros(PVICaso3()[0])) + ")e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
-                            + ")x}Cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] + ("
-                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} Sen[("
+                            + ")x}cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] + ("
+                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} sen[("
                             + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
                     LaLatex.setIcon(L.getIcono());
                 }
@@ -103,8 +103,8 @@ public class TVentana extends javax.swing.JFrame {
                 LaLatex.setIcon(L.getIcono());
             } else {
                 L = new Latex("y(x) = C_1 e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
-                        + ")x}Cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] + "
-                        + "C_2 e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} Sen[("
+                        + ")x}cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] + "
+                        + "C_2 e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} sen[("
                         + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
                 LaLatex.setIcon(L.getIcono());
             }
@@ -122,7 +122,7 @@ public class TVentana extends javax.swing.JFrame {
             Pan3.setVisible(false);
         }
     }
-    
+
     //Encapsulamos en los siguientes metodos, todas las constantes de los PVI's
     private double[] PVICaso1() {
         double a, b, z, d, Vec[];
@@ -153,7 +153,7 @@ public class TVentana extends javax.swing.JFrame {
         Vec = pv.ConstantesCasoIII(a, b, z, d, Root, Complex);
         return Vec;
     }
-    
+
     //Cambiamos el tamaño de la ventana
     private void CambiarTamaño() {
         if (jCheckBox1.isSelected()) {
