@@ -79,32 +79,32 @@ public class TVentana extends javax.swing.JFrame {
             } else {
                 //Metodo de Constantes tipo 3
                 if (PVICaso3()[1] < 0) {
-                    L = new Latex("y(x) =~(" + f.toFraccion(RedondearNumeros(PVICaso3()[0])) + ")e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
-                            + ")x}cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] - ("
-                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} sen[("
+                    L = new Latex("y(x) =~(" + f.toFraccion(RedondearNumeros(PVICaso3()[0])) + ")e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0])))
+                            + ")x}cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x] - ("
+                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))) + ")x} sen[("
                             + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
                     LaLatex.setIcon(L.getIcono());
                 } else {
-                    L = new Latex("y(x) = ~ (" + f.toFraccion(RedondearNumeros(PVICaso3()[0])) + ")e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
+                    L = new Latex("y(x) = ~ (" + f.toFraccion(RedondearNumeros(PVICaso3()[0])) + ")e^{(" + f.toFraccion(RedondearNumeros(SolucionesImaginarias()[0]))
                             + ")x}cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] + ("
-                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} sen[("
+                            + f.toFraccion(Math.abs(RedondearNumeros(PVICaso3()[1]))) + " )e^{(" + f.toFraccion(RedondearNumeros(SolucionesImaginarias()[0])) + ")x} sen[("
                             + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
                     LaLatex.setIcon(L.getIcono());
                 }
             }
         } else {
             if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) > 0) {
-                L = new Latex("y(x) = C_{1} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[0])).toString() + ")x} "
-                        + "+ C_{2} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[1])).toString() + ")x}", 28);
+                L = new Latex("y(x) = C_{1} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[0]))+ ")x} "
+                        + "+ C_{2} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[1])) + ")x}", 28);
                 LaLatex.setIcon(L.getIcono());
             } else if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) == 0) {
-                L = new Latex("y(x) = C_{1} e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x} "
-                        + "+ C_{2} xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())).toString() + ")x}", 28);
+                L = new Latex("y(x) = C_{1} e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())) + ")x} "
+                        + "+ C_{2} xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())) + ")x}", 28);
                 LaLatex.setIcon(L.getIcono());
             } else {
-                L = new Latex("y(x) = C_1 e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString()
-                        + ")x}cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))).toString() + ")x] + "
-                        + "C_2 e^{(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[0]))).toString() + ")x} sen[("
+                L = new Latex("y(x) = C_1 e^{(" + f.toFraccion(RedondearNumeros(SolucionesImaginarias()[0]))
+                        + ")x}cos[(" + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x] + "
+                        + "C_2 e^{(" + f.toFraccion(RedondearNumeros(SolucionesImaginarias()[0])) + ")x} sen[("
                         + f.toFraccion(RedondearNumeros(Math.abs(SolucionesImaginarias()[1]))) + ")x]", 28);
                 LaLatex.setIcon(L.getIcono());
             }
@@ -476,7 +476,7 @@ public class TVentana extends javax.swing.JFrame {
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jCheckBox1))
-                    .addComponent(Pan2, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(Pan2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

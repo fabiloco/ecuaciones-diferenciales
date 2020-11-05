@@ -116,7 +116,7 @@ public class Fraccion {
 
     public Fraccion toFraccion(double decimal) {
 
-        if (decimal != 0) {
+        if (decimal > 0) {
             Fraccion newFraccion;
             String partInt = getPartInt(String.valueOf(decimal));
             String partDecimal = getPartDecimal(String.valueOf(decimal));
@@ -124,7 +124,6 @@ public class Fraccion {
             int n = Integer.parseInt(partInt);
             int d = Integer.parseInt(partDecimal);
             int factorMultiplicador = factorMultiplicador(partDecimal.length());
-
             if (n == 0) {
                 newFraccion = new Fraccion(d, factorMultiplicador);
             } else {
@@ -132,7 +131,25 @@ public class Fraccion {
                 Fraccion f2 = new Fraccion(d, factorMultiplicador);
                 newFraccion = f1.sumar(f2);
             }
+            return newFraccion;
+        } else if (decimal < 0) {
+            Fraccion newFraccion;
+            String partInt = getPartInt(String.valueOf(decimal));
+            String partDecimal = getPartDecimal(String.valueOf(decimal));
 
+            int n = Integer.parseInt(partInt);
+            int d = Integer.parseInt(partDecimal);
+            int factorMultiplicador = factorMultiplicador(partDecimal.length());
+            if (n == 0) {
+                newFraccion = new Fraccion(d, factorMultiplicador);
+                newFraccion.setNumerador(-newFraccion.getNumerador());
+            } else {
+                Fraccion f1 = new Fraccion(Math.abs(n), 1);
+                Fraccion f2 = new Fraccion(d, factorMultiplicador);
+                newFraccion = f1.sumar(f2);
+                newFraccion.setNumerador(-newFraccion.getNumerador());
+            }
+            
             return newFraccion;
         } else {
             Fraccion f = new Fraccion(0, 1);
