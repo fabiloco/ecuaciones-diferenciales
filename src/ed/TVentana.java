@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author Sebastian Ricardo
  */
 public class TVentana extends javax.swing.JFrame {
-
+    
     private Raices Root;
     private Complejos Complex;
     private final int AnchoOriginal;
@@ -23,7 +23,8 @@ public class TVentana extends javax.swing.JFrame {
     private PVI pv;
     private Latex L, L2;
     Fraccion f;
-
+    private InfoExtra In;
+    
     public TVentana() {
         initComponents();
         AnchoOriginal = this.getWidth();
@@ -74,7 +75,7 @@ public class TVentana extends javax.swing.JFrame {
                     L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso2()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())) + ")x} "
                             + "+" + f.toFraccion(RedondearNumeros(PVICaso2()[1])) + "xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())) + ")x}", 28);
                     LaLatex.setIcon(L.getIcono());
-
+                    
                 }
             } else {
                 //Metodo de Constantes tipo 3
@@ -94,7 +95,7 @@ public class TVentana extends javax.swing.JFrame {
             }
         } else {
             if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) > 0) {
-                L = new Latex("y(x) = C_{1} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[0]))+ ")x} "
+                L = new Latex("y(x) = C_{1} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[0])) + ")x} "
                         + "+ C_{2} e^{(" + f.toFraccion(RedondearNumeros(Root.SolucionesDobles()[1])) + ")x}", 28);
                 LaLatex.setIcon(L.getIcono());
             } else if (Root.Discriminante(Root.getA(), Root.getB(), Root.getC()) == 0) {
@@ -133,7 +134,7 @@ public class TVentana extends javax.swing.JFrame {
         Vec = pv.ConstantesCasoI(a, b, z, d, Root);
         return Vec;
     }
-
+    
     private double[] PVICaso2() {
         double a, b, z, d, Vec[];
         a = Double.parseDouble(Ca.getText());
@@ -143,7 +144,7 @@ public class TVentana extends javax.swing.JFrame {
         Vec = pv.ConstantesCasoII(a, b, z, d, Root);
         return Vec;
     }
-
+    
     private double[] PVICaso3() {
         double a, b, z, d, Vec[];
         a = Double.parseDouble(Ca.getText());
@@ -440,6 +441,7 @@ public class TVentana extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton4.setText("Información Adicional");
+        jButton4.setEnabled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -557,6 +559,7 @@ public class TVentana extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Cuidado, el coeficiente " + "'a'" + " no puede ser 0", "Alerta", 0, null);
         }
+        jButton4.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -630,7 +633,11 @@ public class TVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_CaKeyTyped
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        In = new InfoExtra(null, true);
+        In.LlenarEcuacion(Root);
+        In.LlenarRaices(Root, Complex);
+        In.setVisible(true);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

@@ -149,7 +149,7 @@ public class Fraccion {
                 newFraccion = f1.sumar(f2);
                 newFraccion.setNumerador(-newFraccion.getNumerador());
             }
-            
+
             return newFraccion;
         } else {
             Fraccion f = new Fraccion(0, 1);
@@ -198,9 +198,10 @@ public class Fraccion {
             simplificar(this);
             if (this.getDenominador() == 1) {
                 return getNumerador() + "";
+            } else if (numerador < 0) {
+                return " - $\\frac{" + Math.abs(getNumerador()) + "}{" + getDenominador() + "}$";
             } else {
                 return "$\\frac{" + getNumerador() + "}{" + getDenominador() + "}$";
-
             }
         } else {
             return "El denominador debe ser distinto de 0";
