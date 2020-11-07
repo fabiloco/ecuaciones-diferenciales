@@ -34,7 +34,12 @@ public class Complejos {
 
     @Override
     public String toString() {
-        return Real + "±" + Imaginario + "i";
+        Fraccion F = new Fraccion();
+        if (Imaginario < 0) {
+            return F.toFraccion(Real) + "" + F.toFraccion(Imaginario) + "i";
+        } else {
+            return F.toFraccion(Real) + " + " + F.toFraccion(Imaginario) + "i";
+        }
     }
 
 }

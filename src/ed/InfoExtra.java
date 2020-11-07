@@ -90,10 +90,15 @@ public class InfoExtra extends javax.swing.JDialog {
             raTex.setIcon(L3.getIcono());
             L4 = new Latex("r_{1} = r_{2} = " + F.toFraccion(R.UnicaSolucion()), 38);
             ra.setIcon(L4.getIcono());
+        } else {
+            L3 = new Latex("Las~Raices~Imaginarias~son:", 30);
+            raTex.setIcon(L3.getIcono());
+            L4 = new Latex("r_{1} = " + C.FormulaGeneralPositiva(R.getA(), R.getB(), R.getC())
+                    + ";~" + "r_{2} = " + C.FormulaGeneralNegativa(R.getA(), R.getB(), R.getC()), 38);
+            ra.setIcon(L4.getIcono());
         }
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
