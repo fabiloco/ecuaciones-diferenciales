@@ -114,6 +114,7 @@ public class InfoExtra extends javax.swing.JDialog {
         ra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Información Adicional");
 
         ecuTex.setText("a");
 

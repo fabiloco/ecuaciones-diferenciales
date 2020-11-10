@@ -215,6 +215,11 @@ public class TVentana extends javax.swing.JFrame {
         jLabel1.setText(") =");
 
         Cd.setFont(new java.awt.Font("Dialog", 0, 45)); // NOI18N
+        Cd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CdKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 60)); // NOI18N
         jLabel5.setText("y(");
@@ -245,6 +250,11 @@ public class TVentana extends javax.swing.JFrame {
         jLabel7.setText(") =");
 
         Cb.setFont(new java.awt.Font("Dialog", 0, 45)); // NOI18N
+        Cb.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CbKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout Pan3Layout = new javax.swing.GroupLayout(Pan3);
         Pan3.setLayout(Pan3Layout);
@@ -388,7 +398,7 @@ public class TVentana extends javax.swing.JFrame {
                 .addComponent(ct, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         Pan1Layout.setVerticalGroup(
             Pan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -639,6 +649,26 @@ public class TVentana extends javax.swing.JFrame {
         In.setVisible(true);
 
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void CbKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CbKeyTyped
+        char tecla = evt.getKeyChar();    //Agarra la tecla presionada en el evento
+
+        if (Character.isLetter(tecla) || Character.isSpaceChar(tecla)) //Determina si es una letra o si es un espacio
+        {
+            getToolkit().beep();    //Hace un sonidito
+            evt.consume();  //Consume el evento, lo elimina
+        }
+    }//GEN-LAST:event_CbKeyTyped
+
+    private void CdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CdKeyTyped
+        char tecla = evt.getKeyChar();    //Agarra la tecla presionada en el evento
+
+        if (Character.isLetter(tecla) || Character.isSpaceChar(tecla)) //Determina si es una letra o si es un espacio
+        {
+            getToolkit().beep();    //Hace un sonidito
+            evt.consume();  //Consume el evento, lo elimina
+        }
+    }//GEN-LAST:event_CdKeyTyped
 
     /**
      * @param args the command line arguments
