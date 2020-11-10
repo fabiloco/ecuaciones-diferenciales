@@ -36,9 +36,9 @@ public class Complejos {
     public String toString() {
         Fraccion F = new Fraccion();
         if (Imaginario < 0) {
-            return F.toFraccion(Real) + "" + F.toFraccion(Imaginario) + "i";
+            return F.toFraccion(TVentana.RedondearNumeros(Real)) + "" + F.toFraccion(TVentana.RedondearNumeros(Imaginario)) + "i";
         } else {
-            return F.toFraccion(Real) + " + " + F.toFraccion(Imaginario) + "i";
+            return F.toFraccion(TVentana.RedondearNumeros(Real)) + " + " + F.toFraccion(TVentana.RedondearNumeros(Imaginario)) + "i";
         }
     }
 

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author Sebastian Ricardo
  */
 public class TVentana extends javax.swing.JFrame {
-    
+
     private Raices Root;
     private Complejos Complex;
     private final int AnchoOriginal;
@@ -24,7 +24,7 @@ public class TVentana extends javax.swing.JFrame {
     private Latex L, L2;
     Fraccion f;
     private InfoExtra In;
-    
+
     public TVentana() {
         initComponents();
         AnchoOriginal = this.getWidth();
@@ -41,7 +41,7 @@ public class TVentana extends javax.swing.JFrame {
     }
 
     //Metodo para redondear los numeros a sus 4 cifras decimales
-    private double RedondearNumeros(double Num) {
+    public static double RedondearNumeros(double Num) {
         return (double) Math.round(Num * 1000d) / 1000d;
     }
 
@@ -75,7 +75,7 @@ public class TVentana extends javax.swing.JFrame {
                     L = new Latex("y(x) = " + f.toFraccion(RedondearNumeros(PVICaso2()[0])) + "e^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())) + ")x} "
                             + "+" + f.toFraccion(RedondearNumeros(PVICaso2()[1])) + "xe^{(" + f.toFraccion(RedondearNumeros(Root.UnicaSolucion())) + ")x}", 28);
                     LaLatex.setIcon(L.getIcono());
-                    
+
                 }
             } else {
                 //Metodo de Constantes tipo 3
@@ -134,7 +134,7 @@ public class TVentana extends javax.swing.JFrame {
         Vec = pv.ConstantesCasoI(a, b, z, d, Root);
         return Vec;
     }
-    
+
     private double[] PVICaso2() {
         double a, b, z, d, Vec[];
         a = Double.parseDouble(Ca.getText());
@@ -144,7 +144,7 @@ public class TVentana extends javax.swing.JFrame {
         Vec = pv.ConstantesCasoII(a, b, z, d, Root);
         return Vec;
     }
-    
+
     private double[] PVICaso3() {
         double a, b, z, d, Vec[];
         a = Double.parseDouble(Ca.getText());

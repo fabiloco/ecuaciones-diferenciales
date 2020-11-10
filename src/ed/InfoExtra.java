@@ -42,9 +42,9 @@ public class InfoExtra extends javax.swing.JDialog {
         C[0] = R.getA();
         C[1] = R.getB();
         C[2] = R.getC();
-        Co[0] = new Fraccion().toFraccion(R.getA()) + " r^2";
-        Co[1] = new Fraccion().toFraccion(R.getB()) + " r";
-        Co[2] = new Fraccion().toFraccion(R.getC()) + "";
+        Co[0] = new Fraccion().toFraccion(TVentana.RedondearNumeros(R.getA())) + " r^2";
+        Co[1] = new Fraccion().toFraccion(TVentana.RedondearNumeros(R.getB())) + " r";
+        Co[2] = new Fraccion().toFraccion(TVentana.RedondearNumeros(R.getC())) + "";
 
         for (int i = 0; i < 3; i -= -1) {
             if (C[i] == 0) {
@@ -82,13 +82,13 @@ public class InfoExtra extends javax.swing.JDialog {
         if (R.Discriminante(R.getA(), R.getB(), R.getC()) > 0) {
             L3 = new Latex("Las~Raices~son:", 30);
             raTex.setIcon(L3.getIcono());
-            L4 = new Latex("r_{1} = " + F.toFraccion(R.SolucionesDobles()[0])
-                    + ";~" + "r_2 = " + F.toFraccion(R.SolucionesDobles()[1]), 38);
+            L4 = new Latex("r_{1} = " + F.toFraccion(TVentana.RedondearNumeros(R.SolucionesDobles()[0]))
+                    + ";~" + "r_2 = " + F.toFraccion(TVentana.RedondearNumeros(R.SolucionesDobles()[1])), 38);
             ra.setIcon(L4.getIcono());
         } else if (R.Discriminante(R.getA(), R.getB(), R.getC()) == 0) {
             L3 = new Latex("La~Raiz~es:", 30);
             raTex.setIcon(L3.getIcono());
-            L4 = new Latex("r_{1} = r_{2} = " + F.toFraccion(R.UnicaSolucion()), 38);
+            L4 = new Latex("r_{1} = r_{2} = " + F.toFraccion(TVentana.RedondearNumeros(R.UnicaSolucion())), 38);
             ra.setIcon(L4.getIcono());
         } else {
             L3 = new Latex("Las~Raices~Imaginarias~son:", 30);
