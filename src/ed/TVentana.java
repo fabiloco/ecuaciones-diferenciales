@@ -521,9 +521,8 @@ public class TVentana extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator1)
                             .addComponent(jSeparator2)
                             .addComponent(jSeparator4)
@@ -570,6 +569,7 @@ public class TVentana extends javax.swing.JFrame {
             Root.setA(Double.parseDouble(at.getText()));
             Root.setB(Double.parseDouble(bt.getText()));
             Root.setC(Double.parseDouble(ct.getText()));
+            JOptionPane.showMessageDialog(null, "ATENCIÓN\nAlgunos de los numeros puede estar aproximado a 4 cifras decimales");
             MostrarSoluciones();
         } else {
             JOptionPane.showMessageDialog(null, "Cuidado, el coeficiente " + "'a'" + " no puede ser 0", "Alerta", 0, null);
